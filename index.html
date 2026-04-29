@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- Makes the page responsive on phones/tablets -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Java Quest v3 Updated</title>
+
+  <!-- Links this HTML file to the external CSS file -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <!--
+      Top header area for branding.
+      This shows the WSSU ram logo and the title of the game.
+    -->
+    <header class="main-header">
+      <div class="brand-wrap">
+        <img src="images/Ram.jpg" alt="WSSU Ram Logo" class="ram-logo" />
+        <div class="brand-text">
+          <h1>Java Quest</h1>
+          <p>Master Java loops and logic with the WSSU Rams.</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- =========================
+         START SCREEN
+    ========================== -->
+    <section id="start-screen" class="card">
+      <h2>Start</h2>
+
+      <!-- Logo image for the start screen -->
+      <div class="start-logo-wrap">
+        <img src="images/Ram.jpg" alt="WSSU Ram Logo" class="start-ram-logo" />
+      </div>
+
+      <!-- Input where the student types their name -->
+      <label for="student-name"><strong>Student Name:</strong></label>
+      <input type="text" id="student-name" placeholder="Enter your name" />
+
+      <!-- Main menu buttons -->
+      <div class="button-row">
+        <button id="start-btn">Start Pre-Quiz</button>
+        <button id="resume-btn">Resume Saved Game</button>
+        <button id="clear-btn">Clear Saved Progress</button>
+      </div>
+
+      <!-- Small message area for errors/status updates -->
+      <p id="start-message" class="small-message"></p>
+    </section>
+
+    <!-- =========================
+         QUIZ SCREEN
+    ========================== -->
+    <section id="quiz-screen" class="card hidden">
+      <h2 id="quiz-title">Quiz</h2>
+      <p id="quiz-subtitle"></p>
+
+      <!-- Current quiz question -->
+      <div class="question-box">
+        <h3 id="quiz-question-title"></h3>
+        <p id="quiz-question-text"></p>
+      </div>
+
+      <!-- JavaScript inserts answer choices here -->
+      <div id="quiz-options" class="options-box"></div>
+
+      <div class="button-row">
+        <button id="quiz-next-btn">Next Question</button>
+      </div>
+
+      <!-- Feedback message for quiz validation -->
+      <p id="quiz-feedback" class="small-message"></p>
+    </section>
+
+    <!-- =========================
+         Pre-Quiz Placement Screen
+         Explains:
+         - score
+         - recommended difficulty
+         - recommended hint level
+         - question review
+         - option to accept or override recommendation
+    ========================== -->
+    <section id="placement-screen" class="card hidden">
+      <h2>Pre-Quiz Results</h2>
+
+      <!-- Smaller WSSU logo for this section -->
+      <div class="section-logo-wrap">
+        <img src="images/Ram.jpg" alt="WSSU Ram Logo" class="section-ram-logo" />
+      </div>
+
+      <!-- Summary sentence like "You scored 5 out of 8..." -->
+      <p id="placement-summary"></p>
+
+      <!-- Recommended setup based on pre-quiz performance -->
+      <div class="question-box">
+        <h3>Recommended Placement</h3>
+        <p><strong>Suggested Difficulty:</strong> <span id="suggested-difficulty"></span></p>
+        <p><strong>Suggested Hint Level:</strong> <span id="suggested-hints"></span></p>
+        <p id="placement-reason"></p>
+      </div>
+
+      <!-- Detailed review of pre-quiz questions -->
+      <div class="question-box">
+        <h3>Question Review</h3>
+        <div id="placement-review"></div>
+      </div>
+
+      <!-- Student can override the recommended settings -->
+      <div class="question-box">
+        <h3>Choose Your Game Setup</h3>
+
+        <label for="override-difficulty"><strong>Difficulty:</strong></label>
+        <select id="override-difficulty">
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+
+        <label for="override-hints"><strong>Hint Level:</strong></label>
+        <select id="override-hints">
+          <option value="guided">Guided</option>
+          <option value="standard">Standard</option>
+          <option value="minimal">Minimal</option>
+        </select>
+      </div>
+
+      <!-- Buttons for accepting recommendation or using custom settings -->
+      <div class="button-row">
+        <button id="use-recommendation-btn">Use Recommendation</button>
+        <button id="use-custom-btn">Use My Choices</button>
+      </div>
+    </section>
+
+    <!-- =========================
+         GAME SCREEN
+         Students see their level, score, XP, challenge,
+         code editor, hints, progress, badges, and analytics.
+    ========================== -->
+    <section id="game-screen" class="card hidden">
+      <p id="requirement-message" class="requirement-message"></p>
+      <!-- Top status bar -->
+      <div class="top-bar">
+        <div><strong>Name:</strong> <span id="student-display">Student</span></div>
+        <div><strong>Difficulty:</strong> <span id="difficulty-display">Medium</span></div>
+        <div><strong>Hint Level:</strong> <span id="hint-level-display">Standard</span></div>
+        <div><strong>Level:</strong> <span id="level-number">1</span></div>
+        <div><strong>Score:</strong> <span id="score">0</span></div>
+        <div><strong>XP:</strong> <span id="xp-text">0 / 100</span></div>
+      </div>
+
+      <!-- Visual XP progress bar -->
+      <div class="xp-bar-wrap">
+        <div id="xp-bar" class="xp-bar"></div>
+      </div>
+
+      <!-- Notification for obtaining a badge -->
+       <div id="badge-toast" class="badge-toast hidden"></div>
+
+      <!-- Temporary success message shown when a level is cleared -->
+      <div id="level-toast" class="level-toast hidden">Level Cleared!</div>
+
+      <!-- Current coding challenge -->
+      <div class="question-box">
+        <h2 id="question-title">Challenge</h2>
+        <p id="question-text"></p>
+
+        <!-- Shows the output students are expected to produce -->
+        <div class="expected-output">
+          <strong>Expected Output:</strong>
+          <pre id="expected-output"></pre>
+        </div>
+      </div>
+
+      <!-- Text area where students type Java code -->
+      <div class="editor-box">
+        <label for="code-input"><strong>Write your Java code:</strong></label>
+        <textarea id="code-input" placeholder="Type Java code here..."></textarea>
+      </div>
+
+      <!-- Main gameplay buttons -->
+      <div class="button-row">
+        <button id="check-btn">Check Answer</button>
+        <button id="hint-btn">Show Hint</button>
+        <button id="next-btn" disabled>Next Level</button>
+        <button id="save-btn">Save Progress</button>
+        <button id="quit-btn">Quit to Menu</button>
+      </div>
+
+      <!-- Feedback from answer checking -->
+      <div class="feedback-box">
+        <h3>Feedback</h3>
+        <p id="feedback">Your feedback will appear here.</p>
+      </div>
+
+      <!-- Hint area -->
+      <div class="hint-box">
+        <h3>Hint</h3>
+        <p id="hint-text">No hint used yet.</p>
+      </div>
+
+      <!-- Game progress summary -->
+      <div class="progress-box">
+        <h3>Progress</h3>
+        <p id="progress-text"></p>
+      </div>
+
+      <!-- Earned badges -->
+      <div class="badge-box">
+        <h3>Badges</h3>
+        <ul id="badge-list">
+          <li>No badges earned yet.</li>
+        </ul>
+      </div>
+
+      <!-- Session stats like attempts and hints used -->
+      <div class="analytics-box">
+        <h3>Session Analytics</h3>
+        <p id="analytics-text"></p>
+      </div>
+    </section>
+
+    <!-- =========================
+         END SCREEN
+         Shown after the whole game is completed.
+         Displays summary and a play again button.
+    ========================== -->
+    <section id="end-screen" class="card hidden">
+      <h2>Session Complete</h2>
+      <p id="final-message"></p>
+
+      <div class="summary-box">
+        <h3>Performance Summary</h3>
+        <p id="summary-text"></p>
+      </div>
+
+      <div class="button-row">
+        <button id="play-again-btn">Play Again</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- Links the JavaScript file that runs the game's logic -->
+  <script src="script.js"></script>
+</body>
+</html>

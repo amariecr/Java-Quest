@@ -1,0 +1,466 @@
+/* Created variables for WSSU theme*/
+:root {
+  --wssu-red: #c8102e;
+  --wssu-dark-red: #990f25;
+  --wssu-white: #ffffff;
+  --wssu-black: #111111;
+  --wssu-charcoal: #1b1b1b;
+  --wssu-light-gray: #f4f4f4;
+  --wssu-border: #d9d9d9;
+  --wssu-panel: #ffffff;
+  --wssu-soft-red: #fdecef;
+}
+
+/*
+  Styles the whole page background and default text color.
+  A dark overlay is placed over the ram image so content stays readable.
+*/
+body {
+  font-family: Arial, sans-serif;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.78)),
+    url("images/Ram.jpg") center/cover fixed no-repeat;
+  margin: 0;
+  padding: 0;
+  color: var(--wssu-white);
+}
+
+/*
+  Main container that centers the game on the screen
+  and prevents it from being too wide.
+*/
+.container {
+  width: 92%;
+  max-width: 1000px;
+  margin: 30px auto;
+}
+
+
+.main-header {
+  background: linear-gradient(135deg, var(--wssu-red), var(--wssu-dark-red));
+  border: 3px solid var(--wssu-white);
+  border-radius: 18px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+/*
+  Holds the logo and title side-by-side.
+*/
+.brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+/*
+  Main WSSU ram logo in header.
+*/
+.ram-logo {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  background: var(--wssu-white);
+  border-radius: 50%;
+  padding: 6px;
+  border: 3px solid var(--wssu-black);
+}
+
+/*
+  Main page heading.
+*/
+.brand-text h1 {
+  margin: 0 0 6px 0;
+  font-size: 2.3rem;
+  color: var(--wssu-white);
+}
+
+/*
+  Smaller subtitle under the title.
+*/
+.brand-text p {
+  margin: 0;
+  color: #ffe8ec;
+  font-size: 1.05rem;
+}
+
+/*
+  Shared card style used for all screens.
+  Each screen looks like a white panel with red border.
+*/
+.card {
+  background: rgba(255, 255, 255, 0.97);
+  color: var(--wssu-black);
+  padding: 22px;
+  border-radius: 16px;
+  border: 3px solid var(--wssu-red);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
+  margin-bottom: 20px;
+}
+
+/*
+  Utility class used to hide screens until needed.
+*/
+.hidden {
+  display: none;
+}
+
+/*
+  Centers logo images used inside sections.
+*/
+.start-logo-wrap,
+.section-logo-wrap {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+/*
+  Larger ram image on the start screen.
+*/
+.start-ram-logo {
+  width: 140px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/*
+  Smaller logo used on the placement screen.
+*/
+.section-ram-logo {
+  width: 90px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/*
+  Top game info bar that shows name, difficulty, level, score, XP, etc.
+*/
+.top-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+  background: linear-gradient(135deg, var(--wssu-red), var(--wssu-dark-red));
+  color: var(--wssu-white);
+  padding: 14px;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  border: 2px solid var(--wssu-white);
+}
+
+/*
+  Shared styling for form inputs:
+  text fields, dropdowns, and textarea.
+*/
+input,
+select,
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 2px solid var(--wssu-border);
+  border-radius: 10px;
+  font-size: 15px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  background: var(--wssu-white);
+  color: var(--wssu-black);
+}
+
+/*
+  Focus effect so the selected input stands out.
+*/
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--wssu-red);
+  box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.18);
+}
+
+/*
+  Text area is taller because students type code here.
+*/
+textarea {
+  min-height: 220px;
+  resize: vertical;
+}
+
+/*
+  Shared container for rows of buttons.
+*/
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+  margin-bottom: 18px;
+}
+
+/*
+  Main button style.
+*/
+button {
+  padding: 10px 16px;
+  border: 2px solid var(--wssu-dark-red);
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--wssu-red), var(--wssu-dark-red));
+  color: var(--wssu-white);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/*
+  Button hover effect.
+*/
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(200, 16, 46, 0.28);
+}
+
+/*
+  Disabled buttons appear grayed out.
+*/
+button:disabled {
+  background: #b9b9b9;
+  border-color: #999999;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/*
+  Shared box styling for sections inside each card.
+*/
+.question-box,
+.editor-box,
+.feedback-box,
+.hint-box,
+.progress-box,
+.badge-box,
+.analytics-box,
+.summary-box,
+.options-box {
+  margin-bottom: 20px;
+  background: var(--wssu-white);
+  border: 2px solid #ececec;
+  border-left: 6px solid var(--wssu-red);
+  padding: 16px;
+  border-radius: 12px;
+}
+
+/*
+  <pre> is used to show the expected output for code questions.
+*/
+pre {
+  background: #f8f8f8;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #dddddd;
+  white-space: pre-wrap;
+  color: var(--wssu-black);
+}
+
+/*
+  Green success feedback.
+*/
+.feedback-success {
+  color: #0b7a28;
+  font-weight: bold;
+}
+
+/*
+  Red error feedback.
+*/
+.feedback-error {
+  color: var(--wssu-red);
+  font-weight: bold;
+}
+
+/*
+  Dark red hint styling.
+*/
+.feedback-hint {
+  color: var(--wssu-dark-red);
+  font-weight: bold;
+}
+
+/*
+  Smaller helper or status message text.
+*/
+.small-message {
+  color: #444;
+}
+
+/*
+  Styles each multiple-choice quiz option.
+*/
+.options-box label {
+  display: block;
+  background: #fffafa;
+  border: 2px solid #f1c6cf;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+/*
+  Hover effect for quiz choices.
+*/
+.options-box label:hover {
+  border-color: var(--wssu-red);
+  background: var(--wssu-soft-red);
+}
+
+/*
+  Outer XP bar container.
+*/
+.xp-bar-wrap {
+  width: 100%;
+  background: #e5e5e5;
+  border-radius: 999px;
+  height: 20px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  border: 2px solid #cccccc;
+}
+
+/*
+  Inner XP fill bar.
+  JavaScript changes its width as XP changes.
+*/
+.xp-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--wssu-red), #ff4d6d);
+  transition: width 0.4s ease;
+}
+
+/* Badge pop-up notification */
+.badge-toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #c8102e, #990f25);
+  color: white;
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-weight: bold;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+  z-index: 999;
+  animation: slideIn 0.3s ease;
+}
+
+/* Animation for smooth entrance */
+@keyframes slideIn {
+  from {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/*
+  Temporary level-cleared message.
+*/
+.level-toast {
+  background: var(--wssu-soft-red);
+  color: var(--wssu-dark-red);
+  border: 2px solid var(--wssu-red);
+  padding: 10px 14px;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  font-weight: bold;
+}
+
+.requirement-message {
+  font-weight: bold;
+  color: #c8102e;
+  margin-bottom: 10px;
+}
+
+.feedback-success.mastery {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+/*
+  Each reviewed quiz question on the placement screen.
+*/
+.review-item {
+  background: #fffdfd;
+  border: 1px solid #ead0d5;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+/*
+  Text color for correct responses.
+*/
+.correct {
+  color: #0b7a28;
+  font-weight: bold;
+}
+
+/*
+  Text color for incorrect responses.
+*/
+.incorrect {
+  color: var(--wssu-red);
+  font-weight: bold;
+}
+
+/*
+  Standard left spacing for badge lists.
+*/
+ul {
+  padding-left: 20px;
+}
+
+/*
+  Shared heading color.
+*/
+h1, h2, h3 {
+  color: var(--wssu-dark-red);
+}
+
+/*
+  Keeps strong text using inherited color
+  instead of changing unexpectedly.
+*/
+strong {
+  color: inherit;
+}
+
+/*
+  Responsive changes for smaller screens.
+*/
+@media (max-width: 700px) {
+  .brand-wrap {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .ram-logo {
+    width: 90px;
+    height: 90px;
+  }
+
+  .brand-text h1 {
+    font-size: 1.8rem;
+  }
+
+  .game-banner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
